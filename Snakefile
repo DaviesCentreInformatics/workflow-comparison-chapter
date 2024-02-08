@@ -1,17 +1,17 @@
 rule all:
 	input:
-		expand("results/variants/SVs/{sample}.vcf.gz", sample=config["samples"]),
-		expand("results/nanoplot/raw/{sample}_raw", sample=config["samples"]),
-		expand("results/nanoplot/trimmed/{sample}_trimmed", sample=config["samples"])
+		expand("snakemake_snakemake_results/variants/SVs/{sample}.vcf.gz", sample=config["samples"]),
+		expand("snakemake_results/nanoplot/raw/{sample}_raw", sample=config["samples"]),
+		expand("snakemake_results/nanoplot/trimmed/{sample}_trimmed", sample=config["samples"])
 
 rule MINIMAP2:
 	input:
-		read = "results/filtlong/{sample}.trimmed.fastq.gz",
+		read = "snakemake_results/filtlong/{sample}.trimmed.fastq.gz",
 		index = config["minimap_index"]
 
 	output:
-		bam="results/minimap2/{sample}.sorted.bam",
-		bai="results/minimap2/{sample}.sorted.bam.bai"
+		bam="snakemake_results/minimap2/{sample}.sorted.bam",
+		bai="snakemake_results/minimap2/{sample}.sorted.bam.bai"
 
 	threads: 8
 	
@@ -33,7 +33,7 @@ rule NANOPLOT_RAW:
 		fastq = "input_data/raw_fastq/{sample}.fastq.gz"
 	
 	output:
-		directory("results/nanoplot/raw/{sample}_raw/")
+		directory("snakemake_results/nanoplot/raw/{sample}_raw/")
 
 	threads: 4
 
@@ -41,7 +41,7 @@ rule NANOPLOT_RAW:
 		"environment.yaml"
 
 	log:
-		"results/logs/nanoplot/raw/{sample}.log"
+		"snakemake_results/logs/nanoplot/raw/{sample}.log"
 
 	shell: 
 		"""
@@ -59,7 +59,7 @@ rule FILTLONG:
 		fastq = "input_data/raw_fastq/{sample}.fastq.gz"
 	
 	output:
-		filtered = "results/filtlong/{sample}.trimmed.fastq.gz"
+		filtered = "snakemake_results/filtlong/{sample}.trimmed.fastq.gz"
 
 	wildcard_constraints:
 		sample = "[A-Za-z0-9]+"
@@ -70,19 +70,19 @@ rule FILTLONG:
 		"environment.yaml"
 
 	log:
-		"results/logs/filtlong/{sample}.log"
+		"snakemake_results/logs/filtlong/{sample}.log"
 
 	shell: 
 		"""
-		filtlong --min_length 200 {input.fastq} | bgzip > results/filtlong/{wildcards.sample}.trimmed.fastq.gz
+		filtlong --min_length 200 {input.fastq} | bgzip > snakemake_results/filtlong/{wildcards.sample}.trimmed.fastq.gz
 		"""
 
 rule NANOPLOT_TRIMMED:
 	input:
-		fastq = "results/filtlong/{sample}.trimmed.fastq.gz"
+		fastq = "snakemake_results/filtlong/{sample}.trimmed.fastq.gz"
 	
 	output:
-		directory("results/nanoplot/trimmed/{sample}_trimmed/")
+		directory("snakemake_results/nanoplot/trimmed/{sample}_trimmed/")
 
 	threads: 4
 
@@ -90,7 +90,7 @@ rule NANOPLOT_TRIMMED:
 		"environment.yaml"
 
 	log:
-		"results/logs/nanoplot/trimmed/{sample}.log"
+		"snakemake_results/logs/nanoplot/trimmed/{sample}.log"
 
 	shell: 
 		"""
@@ -105,13 +105,13 @@ rule NANOPLOT_TRIMMED:
 
 rule SNIFFLES2:
 	input:
-		bam="results/minimap2/{sample}.sorted.bam",
-		bai="results/minimap2/{sample}.sorted.bam.bai",
+		bam="snakemake_results/minimap2/{sample}.sorted.bam",
+		bai="snakemake_results/minimap2/{sample}.sorted.bam.bai",
 		ref=config["reference"]
 
 	output:
-		vcf="results/variants/SVs/{sample}.vcf.gz",
-		snf="results/variants/SVs/{sample}.snf.bz2"
+		vcf="snakemake_results/variants/SVs/{sample}.vcf.gz",
+		snf="snakemake_results/variants/SVs/{sample}.snf.bz2"
 
 	threads: 4
 
@@ -125,9 +125,9 @@ rule SNIFFLES2:
 		"""
 		sniffles --input {input.bam} \
 			--vcf {output.vcf} \
-			--snf results/variants/SVs/{wildcards.sample}.snf \
+			--snf snakemake_results/variants/SVs/{wildcards.sample}.snf \
 			--reference {input.ref} \
 			--threads {threads} \
 			--output-rnames
-		bzip2 results/variants/SVs/{wildcards.sample}.snf &> {log}
+		bzip2 snakemake_results/variants/SVs/{wildcards.sample}.snf &> {log}
 		"""

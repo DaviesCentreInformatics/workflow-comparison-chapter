@@ -3,5 +3,5 @@ samples:
   - SRR12898316
   - SRR24678051
 
-minimap_index: /Users/callummacphillamy/Projects/variantCaller/input_data/reference/GCF_009914755.1_T2T-CHM13v2.0_genomic.mmi
-reference: /Users/callummacphillamy/Projects/variantCaller/input_data/reference/GCF_009914755.1_T2T-CHM13v2.0_genomic.fa
+minimap_index: input_data/reference/GCF_009914755.1_T2T-CHM13v2.0_genomic.mmi
+reference: input_data/reference/GCF_009914755.1_T2T-CHM13v2.0_genomic.fa
