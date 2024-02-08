@@ -111,7 +111,7 @@ rule SNIFFLES2:
 
 	output:
 		vcf="results/variants/SVs/{sample}.vcf.gz",
-		snf="results/variants/SVs/{sample}.snf.gz"
+		snf="results/variants/SVs/{sample}.snf.bz2"
 
 	threads: 4
 
