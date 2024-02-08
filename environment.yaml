@@ -1,0 +1,12 @@
+name: variant
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+ - sniffles=2.2
+ - minimap2=2.26
+ - samtools=1.19
+ - filtlong=0.2.1
+ - nanoplot=1.42
+ - bzip2=1.0.8

@@ -2,3 +2,11 @@
 *.fq.gz
 *.mmi
 *.fa*
+.snakemake*
+.DS_Store
+*.log
+*.html
+*.zip
+*.gz
+*.txt
+*.png
