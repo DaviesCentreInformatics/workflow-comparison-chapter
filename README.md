@@ -9,7 +9,6 @@ Files necessary for the Nextflow version of the pipeline:
 - `main.nf`
 - `nextflow.config`
 
-
 Run the Nextflow pipeline with the following command:
 
 ```bash
