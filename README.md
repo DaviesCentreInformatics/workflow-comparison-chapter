@@ -11,7 +11,7 @@ Files necessary for the Snakemake version of the pipeline:
 
 - `conf/snakemake-config`
 - `environment.yaml`
-- `Snakefil`
+- `Snakefile`
 
 File necessary for the Shell version of the pipeline:
 
