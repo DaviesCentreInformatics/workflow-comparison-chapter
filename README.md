@@ -8,12 +8,15 @@ Files necessary for the Nextflow version of the pipeline:
 - `nextflow-dockerexample.config`
 - `main.nf`
 - `nextflow.config`
+- `samplesheet.csv`
+- `nextflow-params.yaml`
 
+Before runnning the Nextflow version of the pipeline, be sure to update the paths in `samplesheet.csv` and `nextflow-params.yaml` to reflect the paths on your machine.
 Run the Nextflow pipeline with the following command:
 
 ```bash
 conda activate nextflow
-nextflow run 
+nextflow run main.nf -params-file nextflow-params.yaml -profile example
 ```
 
 ## Snakemake
