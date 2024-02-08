@@ -11,3 +11,6 @@
 *.txt
 *.png
 results/*
+.nextflow/*
+work/*
+.nextflow*
