@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Take a path to a directory containing fastq files and run the variant calling pipeline
 input_path=$1
 samples=(${input_path}"/*.fastq.gz")

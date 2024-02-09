@@ -27,7 +27,6 @@ Files necessary for the Snakemake version of the pipeline:
 - `environment.yaml`
 - `Snakefile`
 
-
 Run the Snakemake pipeline with the following command:
 
 ```bash

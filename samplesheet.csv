@@ -1,4 +1,4 @@
 sampleID,fastq
-SRR12898293,/Users/callummacphillamy/Projects/variantCaller/input_data/raw_fastq/SRR12898293.fastq.gz
-SRR24678051,/Users/callummacphillamy/Projects/variantCaller/input_data/raw_fastq/SRR24678051.fastq.gz
-SRR12898316,/Users/callummacphillamy/Projects/variantCaller/input_data/raw_fastq/SRR12898316.fastq.gz
+SRR12898293,<YOUR_ABS_PATH_HERE>/bookChapter/input_data/raw_fastq/SRR12898293.fastq.gz
+SRR24678051,<YOUR_ABS_PATH_HERE>/bookChapter/input_data/raw_fastq/SRR24678051.fastq.gz
+SRR12898316,<YOUR_ABS_PATH_HERE>/bookChapter/input_data/raw_fastq/SRR12898316.fastq.gz

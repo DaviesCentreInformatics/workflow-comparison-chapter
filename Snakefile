@@ -1,6 +1,6 @@
 rule all:
 	input:
-		expand("snakemake_snakemake_results/variants/SVs/{sample}.vcf.gz", sample=config["samples"]),
+		expand("snakemake_results/variants/SVs/{sample}.vcf.gz", sample=config["samples"]),
 		expand("snakemake_results/nanoplot/raw/{sample}_raw", sample=config["samples"]),
 		expand("snakemake_results/nanoplot/trimmed/{sample}_trimmed", sample=config["samples"])
 

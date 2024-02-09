@@ -1,5 +1,5 @@
 samplesheet: samplesheet.csv
-reference: /Users/callummacphillamy/Projects/bookChapter/input_data/reference/GCF_009914755.1_T2T-CHM13v2.0_genomic.fa
-reference_index: /Users/callummacphillamy/Projects/bookChapter/input_data/reference/GCF_009914755.1_T2T-CHM13v2.0_genomic.fa.fai
-minimap_index: /Users/callummacphillamy/Projects/bookChapter/input_data/reference/GCF_009914755.1_T2T-CHM13v2.0_genomic.mmi
+reference: <YOUR_ABS_PATH_HERE>/bookChapter/input_data/reference/GCF_009914755.1_T2T-CHM13v2.0_genomic.fa
+reference_index: /<YOUR_ABS_PATH_HERE>/bookChapter/input_data/reference/GCF_009914755.1_T2T-CHM13v2.0_genomic.fa.fai
+minimap_index: <YOUR_ABS_PATH_HERE>/bookChapter/input_data/reference/GCF_009914755.1_T2T-CHM13v2.0_genomic.mmi
 outdir: nextflow_results
