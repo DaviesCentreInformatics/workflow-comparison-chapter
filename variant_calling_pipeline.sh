@@ -46,8 +46,8 @@ do
 	samtools index ${output_dir}/minimap2/${sample_name}.sorted.bam
 
 	bam=${output_dir}/minimap2/${sample_name}.sorted.bam
-	
-	sniffles --input $output_dir/minimap2/${sample_name}.sorted.bam \
+	mkdir -p ${output_dir}/variants/SVs
+	sniffles --input ${output_dir}/minimap2/${sample_name}.sorted.bam \
 			--vcf ${output_dir}/variants/SVs/${sample_name}.vcf \
 			--snf ${output_dir}/variants/SVs/${sample_name}.snf \
 			--reference $reference \
