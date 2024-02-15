@@ -43,6 +43,12 @@ if (params.outdir == null) {
 	error "Please provide an output directory using the `--outdir` flag"
 	System.exit(1)
 }
+if (params.sourceDir != null) {
+	if (params.sourceDir != params.outdir) {
+		error "The source directory is not the same as the output directory. This may cause issues with Singularity."
+		System.exit(1)
+	}
+}
 
 log.info """\
 N E X T F L O W  --  V A R I A N T   C A L L I N G  --  O N T
@@ -158,27 +164,6 @@ process MINIMAP2 {
 	"""
 }
 
-process SPLITBAM {
-	tag "$sampleID"
-	label "process_low"
-
-	//publishDir "$params.outdir/variants/splitBams", mode: 'copy'
-
-	input:
-	tuple val(sampleID), path(bam), path(bai)
-
-	output:
-    tuple val(sampleID), path("${sampleID}.*.bam"), path("${sampleID}.*.bam.bai"), emit: split_bam
-
-	shell:
-    '''
-    samtools idxstats !{bam} | cut -f 1 | grep -v '*' > !{sampleID}.chromosomes.txt
-    while IFS= read -r line; do
-        samtools view -b !{bam} ${line} > !{sampleID}.${line}.bam ;
-        samtools index !{sampleID}.${line}.bam
-    done < !{sampleID}.chromosomes.txt
-    '''
-}
 
 process SNIFFLES2 {
 	tag "$sampleID"
